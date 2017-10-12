@@ -55,16 +55,34 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var HomePage = (function () {
     function HomePage(navCtrl) {
         this.navCtrl = navCtrl;
+        this.wordList = [
+            { Hanzi: "我", Pinyin: "Wǒ", English: "I" },
+            { Hanzi: "我们", Pinyin: "Wǒmen", English: "we" }
+        ];
+        this.flashCardNumber = 0;
+        this.isAnswerShowed = false;
     }
+    HomePage.prototype.showAnswer = function () {
+        this.isAnswerShowed = true;
+    };
+    HomePage.prototype.userKnowsWord = function () {
+        this.flashCardNumber++;
+        this.isAnswerShowed = false;
+    };
     return HomePage;
 }());
 HomePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-home',template:/*ion-inline-start:"V:\Kod\Github\learningAppPOC\src\pages\home\home.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Home</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <h3>Ionic Menu Starter</h3>\n\n  <p>\n    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.\n  </p>\n\n  <button ion-button secondary menuToggle>Toggle Menu</button>\n</ion-content>\n'/*ion-inline-end:"V:\Kod\Github\learningAppPOC\src\pages\home\home.html"*/
+        selector: 'page-home',template:/*ion-inline-start:"V:\Kod\Github\learningAppPOC\src\pages\home\home.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Home</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-card>\n    <ion-card-header>\n      <div text-center>\n        {{ wordList[flashCardNumber].Hanzi }}\n        <div *ngIf="isAnswerShowed">\n          {{ wordList[flashCardNumber].Pinyin }}<br>\n           {{ wordList[flashCardNumber].English }}\n        </div>\n      </div>\n    </ion-card-header>\n    <ion-card-content>\n      <div text-center>\n        <button ion-button color="danger" round>x</button>\n        <button ion-button color="primary" round (click)="showAnswer()">↺</button>\n        <button ion-button color="secondary" round (click)="userKnowsWord()">✓</button>\n      </div>\n    </ion-card-content>\n  </ion-card>\n</ion-content>'/*ion-inline-end:"V:\Kod\Github\learningAppPOC\src\pages\home\home.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]])
 ], HomePage);
 
+var Word = (function () {
+    function Word() {
+    }
+    return Word;
+}());
 //# sourceMappingURL=home.js.map
 
 /***/ }),
