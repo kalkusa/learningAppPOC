@@ -25511,3 +25511,11 @@ ion-navbar.toolbar {
   height: calc(46px + constant(safe-area-inset-top));
   min-height: calc(46px + constant(safe-area-inset-top));
 }
+
+.hanzi {
+  font-size: 25pt;
+}
+
+.pinyin {
+  font-size: 15pt;
+}

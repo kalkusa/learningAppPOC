@@ -11,10 +11,14 @@
   <ion-card>
     <ion-card-header>
       <div text-center>
-        {{ wordList[flashCardNumber].Hanzi }}
+        <div class="hanzi">
+          {{ wordList[flashCardNumber].Hanzi }}
+        </div>
         <div *ngIf="isAnswerShowed">
-          {{ wordList[flashCardNumber].Pinyin }}<br>
-           {{ wordList[flashCardNumber].English }}
+          <div class="pinyin">
+            {{ wordList[flashCardNumber].Pinyin }}
+          </div>
+          {{ wordList[flashCardNumber].English }}
         </div>
       </div>
     </ion-card-header>
