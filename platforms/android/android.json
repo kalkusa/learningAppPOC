@@ -27,6 +27,10 @@
             {
               "xml": "<feature name=\"StatusBar\"><param name=\"android-package\" value=\"org.apache.cordova.statusbar.StatusBar\" /><param name=\"onload\" value=\"true\" /></feature>",
               "count": 1
+            },
+            {
+              "xml": "<feature name=\"SQLitePlugin\"><param name=\"android-package\" value=\"io.sqlc.SQLitePlugin\" /></feature>",
+              "count": 1
             }
           ]
         }
@@ -50,6 +54,9 @@
       "PACKAGE_NAME": "io.ionic.starter"
     },
     "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "cordova-sqlite-storage": {
       "PACKAGE_NAME": "io.ionic.starter"
     }
   },
@@ -87,6 +94,14 @@
       "clobbers": [
         "window.StatusBar"
       ]
+    },
+    {
+      "id": "cordova-sqlite-storage.SQLitePlugin",
+      "file": "plugins/cordova-sqlite-storage/www/SQLitePlugin.js",
+      "pluginId": "cordova-sqlite-storage",
+      "clobbers": [
+        "SQLitePlugin"
+      ]
     }
   ],
   "plugin_metadata": {
@@ -95,6 +110,7 @@
     "cordova-plugin-device": "1.1.4",
     "cordova-plugin-splashscreen": "4.0.3",
     "cordova-plugin-ionic-webview": "1.1.15",
-    "cordova-plugin-statusbar": "2.2.4-dev"
+    "cordova-plugin-statusbar": "2.2.4-dev",
+    "cordova-sqlite-storage": "2.0.4"
   }
 }
