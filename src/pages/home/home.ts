@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 
 @Component({
   selector: 'page-home',
@@ -9,9 +10,9 @@ export class HomePage {
 
   public wordList: Word[];
   public flashCardNumber: number;
-  public isAnswerShowed:boolean;
+  public isAnswerShowed: boolean;
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, private sqlite: SQLite) {
     this.wordList = [
       { Hanzi: "我", Pinyin: "Wǒ", English: "I" },
       { Hanzi: "我们", Pinyin: "Wǒmen", English: "we" },
@@ -27,11 +28,26 @@ export class HomePage {
       { Hanzi: "谁", Pinyin: "Shéi", English: "who" }
     ];
     this.flashCardNumber = 0;
-    this.isAnswerShowed = false; 
+    this.isAnswerShowed = false;
+
+    this.sqlite.create({
+      name: 'data.db',
+      location: 'default'
+    }).then((db: SQLiteObject) => {
+      db.executeSql('create table danceMoves(name VARCHAR(32))', {})
+        .then(() => console.log('Executed SQL'))
+        .catch(e => console.log(e));
+    })
+      .catch(e => console.log(e));
+
+    this.sqlite.echoTest().then(() => {
+      console.log('echo');
+    }
+    );
   }
 
   showAnswer() {
-    this.isAnswerShowed = true; 
+    this.isAnswerShowed = true;
   }
 
   userKnowsWord() {
